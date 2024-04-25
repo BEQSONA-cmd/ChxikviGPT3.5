@@ -1,0 +1,27 @@
+beqa: yoo
+AI: I am not available right now. Please try again later.
+
+beqa: yoo
+Beqa: asdas
+
+emanuel: jasjghdjahsg
+Beqa: heyu
+
+emanuel: asd;khasldasd
+AI: I am not available right now. Please try again later.
+
+beqa: yoo
+Beqa: sd
+
+beqa: yoo wazaaap
+AI: I am not available right now. Please try again later.
+
+beqa: asd
+AI: I am not available right now. Please try again later.
+
+beqa: asd
+AI: I am not available right now. Please try again later.
+
+beqa: yoo
+Beqa: asdasd
+

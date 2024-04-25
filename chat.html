@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CHAT</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+    <div id="chat-container">
+        <button id="start-chat-btn" class="shadow__btn">Start Chat</button>
+        <div class="form__group field" id="name-input-container">
+            <input type="input" class="form__field" id="name-input" placeholder="Name" required="">
+            <label for="name" class="form__label">Name</label>
+        </div>
+        <div class="form__group field" id="chat-id-input-container">
+            <input type="input" class="form__field" id="chat-id-input" placeholder="Chat ID" required="">
+            <label for="chat-id" class="form__label">Chat ID</label>
+        </div>
+        <button id="logo-btn" class="shadow__btn" style="display:none">ChxikviGPT 3.5</button>
+        <div id="chat-box" style="display: none;"></div>
+        <input type="text" id="message-input" placeholder="Type your message..." autofocus>
+        <button id="send-button">Send</button>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
