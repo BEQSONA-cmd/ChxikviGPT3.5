@@ -33,12 +33,12 @@ async def handle_message(websocket, path):
         if chat_id in chats:
             msg = makemsg(data['name'], data['message'])
             await asyncio.wait([client.send(dumps(msg)) for client in chats[chat_id]])
-            for client in chats[chat_id]:
-                await client.send(dumps(makemsg('ChxikviGPT', bot_reply(*msg.values()))))
+           # for client in chats[chat_id]:
+               # await client.send(dumps(makemsg('ChxikviGPT', bot_reply(*msg.values()))))
         else:
             chats[chat_id] = []
 
-start_server = websockets.serve(handle_message, "localhost", 8081)
+start_server = websockets.serve(handle_message, "10.0.0.225", 8880)
 
 asyncio.get_event_loop().run_until_complete(start_server)
 asyncio.get_event_loop().run_forever()

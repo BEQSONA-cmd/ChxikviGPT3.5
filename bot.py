@@ -47,8 +47,7 @@ def bot_reply(sender, text):
         convo.send_message(sysprompt)
         sender_and_text = sender + ': ' + text
         resp = convo.send_message(sender_and_text)
-        for i in islice(resp, 1):
-            s = i.text
+        s = convo.last.text
     else:
         s = 'I am not available right now. Please try again later.'
     return s
