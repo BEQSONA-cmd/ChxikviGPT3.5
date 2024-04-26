@@ -62,11 +62,17 @@ document.addEventListener("DOMContentLoaded", function () {
             sendButton.style.display = "block";
 
             ws = new WebSocket(`ws://132.145.250.27:8880/chat/${chatId}`);
-
-            ws.onmessage = function (event) {
+	   
+	    ws.onmessage = function (event) {
                 const data = JSON.parse(event.data);
                 const messageElement = document.createElement("div");
-                messageElement.textContent = `${data.name}: ${data.message}`;
+                const nameElement = document.createElement("span"); // Added
+                const messageContent = document.createElement("span"); // Added
+                nameElement.textContent = `${data.name}: `;
+                nameElement.style.fontWeight = "bold"; // Added
+                messageContent.textContent = data.message;
+                messageElement.appendChild(nameElement); // Added
+                messageElement.appendChild(messageContent); // Added
                 chatBox.appendChild(messageElement);
                 chatBox.scrollTop = chatBox.scrollHeight;
             }
