@@ -13,11 +13,6 @@ def makemsg(name, message):
         'message': message
     })
 
-# import time; time.sleep(5)
-#     for client in chats[chat_id]:
-#         print('sending message')
-#         client.send(makemsg('ChxikviGPT', 'I am not available right now. Please try again later'))
-
 def get_reply(msg):
     return f"I am not available right now {msg['name']}. Please try again later."
 
@@ -33,12 +28,12 @@ async def handle_message(websocket, path):
         if chat_id in chats:
             msg = makemsg(data['name'], data['message'])
             await asyncio.wait([client.send(dumps(msg)) for client in chats[chat_id]])
-           # for client in chats[chat_id]:
-               # await client.send(dumps(makemsg('ChxikviGPT', bot_reply(*msg.values()))))
+            for client in chats[chat_id]:
+                await client.send(dumps(makemsg('ChxikviGPT', bot_reply(*msg.values()))))
         else:
             chats[chat_id] = []
 
-start_server = websockets.serve(handle_message, "10.0.0.225", 8880)
+start_server = websockets.serve(handle_message, "0.0.0.0", 8880)
 
 asyncio.get_event_loop().run_until_complete(start_server)
 asyncio.get_event_loop().run_forever()

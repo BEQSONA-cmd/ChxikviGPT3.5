@@ -61,7 +61,7 @@ document.addEventListener("DOMContentLoaded", function () {
             messageInput.style.display = "block";
             sendButton.style.display = "block";
 
-            ws = new WebSocket(`ws://132.145.250.27:8880/chat/${chatId}`);
+            ws = new WebSocket(`ws://107.20.17.136:8880/chat/${chatId}`);
 	   
 	    ws.onmessage = function (event) {
                 const data = JSON.parse(event.data);
