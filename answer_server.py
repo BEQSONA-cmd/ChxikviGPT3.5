@@ -1,9 +1,16 @@
+#!/usr/bin/env python3
 import asyncio
 import websockets
 from json import dumps, loads
 from time import sleep
 
 from bot import bot_reply
+
+def gethost():
+    from socket import gethostname
+    if gethostname().endswith('42wolfsburg.de'):
+        return 'localhost'
+    return '0.0.0.0'
 
 chats = {}
 
@@ -31,15 +38,16 @@ async def handle_message(websocket, path):
                 tasks = [client.send(dumps(msg)) for client in chats[chat_id]]
                 await asyncio.wait([asyncio.create_task(task) for task in tasks])
                 await asyncio.sleep(1)
+                response = bot_reply(*msg.values())
                 for client in chats[chat_id]:
-                    await client.send(dumps(makemsg('ChxikviGPT', bot_reply(*msg.values()))))
+                    await client.send(dumps(makemsg('ChxikviGPT', response)))
             else:
                 chats[chat_id] = set()
     finally:
         if chat_id in chats:
             chats[chat_id].remove(websocket)
 
-start_server = websockets.serve(handle_message, "0.0.0.0", 8880)
+start_server = websockets.serve(handle_message, gethost(), 8880)
 
 asyncio.get_event_loop().run_until_complete(start_server)
 asyncio.get_event_loop().run_forever()
