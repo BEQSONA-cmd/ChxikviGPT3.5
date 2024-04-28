@@ -3,14 +3,13 @@ import asyncio
 import websockets
 from json import dumps, loads
 from time import sleep
-
 from bot import bot_reply
 
 def gethost():
     from socket import gethostname
     if gethostname().endswith('42wolfsburg.de'):
         return 'localhost'
-    return '0.0.0.0'
+    return 'YOUR_IP_ADDRESS' # YOUR_IP_ADDRESS should be replaced with the IP address of the machine where the server is running
 
 chats = {}
 

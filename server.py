@@ -34,6 +34,5 @@ class MyHTTPRequestHandler(http.server.SimpleHTTPRequestHandler):
     do_GET = handle_get_request
 
 if __name__ == '__main__':
-    #httpd = http.server.HTTPServer(('10.0.0.225', 8080), MyHTTPRequestHandler)
-    httpd = http.server.HTTPServer(('0.0.0.0', 8080), MyHTTPRequestHandler)
+    httpd = http.server.HTTPServer(('localhost', 8080), MyHTTPRequestHandler) # Change localhost with IP address of the machine where the server is running
     httpd.serve_forever()
